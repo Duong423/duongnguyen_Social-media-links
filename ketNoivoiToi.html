@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nguyễn Tô Dương</title>
+    <title>Liên kết mạng xã hội - Nguyễn Tô Dương</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -14,316 +14,38 @@
       
       * {
         font-family: 'Inter', sans-serif;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
       }
       
       body {
-        background: #0F0F23;
-        color: #ffffff;
-        line-height: 1.6;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        position: relative;
         overflow-x: hidden;
       }
       
-      .gradient-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-      }
-      
-      .container {
-        max-width: 480px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      
-      .profile-card {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-      
-      .avatar {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        margin: 0 auto 24px;
-        border: 4px solid rgba(255, 255, 255, 0.2);
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-      
-      .avatar:hover {
-        transform: scale(1.05);
-      }
-      
-      .name {
-        font-size: 28px;
-        font-weight: 700;
-        margin-bottom: 8px;
-        letter-spacing: -0.02em;
-      }
-      
-      .title {
-        font-size: 16px;
-        opacity: 0.8;
-        margin-bottom: 16px;
-        font-weight: 400;
-      }
-      
-      .bio {
-        font-size: 14px;
-        opacity: 0.7;
-        line-height: 1.5;
-        max-width: 360px;
-        margin: 0 auto 32px;
-      }
-      
-      .links-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-bottom: 40px;
-      }
-      
-      .link-item {
-        display: block;
-        padding: 16px 24px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        text-decoration: none;
-        color: white;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .link-item::before {
+      body::before {
         content: '';
         position: absolute;
         top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-        transition: left 0.5s;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+        animation: float 6s ease-in-out infinite;
       }
       
-      .link-item:hover::before {
-        left: 100%;
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(1deg); }
       }
       
-      .link-item:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.3);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      }
-      
-      .link-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        position: relative;
-        z-index: 1;
-      }
-      
-      .link-icon {
-        font-size: 20px;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .link-text {
-        font-weight: 500;
-        font-size: 16px;
-      }
-      
-      .stats-section {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        padding: 24px;
-        margin-bottom: 32px;
-        backdrop-filter: blur(10px);
-      }
-      
-      .stats-title {
-        font-size: 14px;
-        font-weight: 600;
-        opacity: 0.8;
-        margin-bottom: 16px;
-        text-align: center;
-      }
-      
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        text-align: center;
-      }
-      
-      .stat-item {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-      
-      .stat-number {
-        font-size: 20px;
-        font-weight: 700;
-        color: #60a5fa;
-      }
-      
-      .stat-label {
-        font-size: 12px;
-        opacity: 0.6;
-        font-weight: 400;
-      }
-      
-      .visitors-section {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        overflow: hidden;
-        margin-bottom: 32px;
-      }
-      
-      .visitors-header {
-        padding: 16px 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        cursor: pointer;
-        transition: background 0.3s ease;
-      }
-      
-      .visitors-header:hover {
-        background: rgba(255, 255, 255, 0.05);
-      }
-      
-      .visitors-title {
-        font-size: 14px;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      
-      .visitors-toggle {
-        transition: transform 0.3s ease;
-        opacity: 0.7;
-      }
-      
-      .visitors-list {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-      
-      .visitors-list.expanded {
-        max-height: 300px;
-      }
-      
-      .visitor-item {
-        padding: 12px 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        transition: background 0.3s ease;
-      }
-      
-      .visitor-item:hover {
-        background: rgba(255, 255, 255, 0.05);
-      }
-      
-      .visitor-item:last-child {
-        border-bottom: none;
-      }
-      
-      .visitor-avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        font-size: 12px;
-        flex-shrink: 0;
-      }
-      
-      .visitor-info {
-        flex: 1;
-        min-width: 0;
-      }
-      
-      .visitor-name {
-        font-size: 13px;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      
-      .visitor-details {
-        font-size: 11px;
-        opacity: 0.6;
-        margin-top: 2px;
-      }
-      
-      .visitor-time {
-        font-size: 11px;
-        opacity: 0.5;
-        flex-shrink: 0;
-      }
-      
-      .online-dot {
-        width: 6px;
-        height: 6px;
-        background: #10b981;
-        border-radius: 50%;
-        animation: pulse 2s infinite;
-      }
-      
-      @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-      }
-      
-      .footer {
-        text-align: center;
-        opacity: 0.5;
-        font-size: 12px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      
-      .fade-in {
-        animation: fadeIn 0.6s ease-out forwards;
-      }
-      
-      @keyframes fadeIn {
+      @keyframes slideUp {
         from {
           opacity: 0;
-          transform: translateY(20px);
+          transform: translateY(30px);
         }
         to {
           opacity: 1;
@@ -331,129 +53,264 @@
         }
       }
       
-      /* Specific link colors */
-      .facebook { background: linear-gradient(135deg, #1877f2, #0d5db8); }
-      .instagram { background: linear-gradient(135deg, #e4405f, #c13584); }
-      .tiktok { background: linear-gradient(135deg, #000000, #333333); }
-      .soundcloud { background: linear-gradient(135deg, #ff5500, #ff7700); }
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
       
-      @media (max-width: 480px) {
-        .container {
-          padding: 20px 16px;
+      @keyframes pulse {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+        }
+      }
+      
+      .animate-slideUp {
+        animation: slideUp 0.6s ease-out forwards;
+      }
+      
+      .animate-scaleIn {
+        animation: scaleIn 0.5s ease-out forwards;
+      }
+      
+      .animate-pulse-custom {
+        animation: pulse 2s infinite;
+      }
+      
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+          0 8px 32px 0 rgba(31, 38, 135, 0.37),
+          inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+      }
+      
+      .social-btn {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .social-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+      }
+      
+      .social-btn:hover::before {
+        left: 100%;
+      }
+      
+      .social-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+      
+      .info-item {
+        transition: all 0.3s ease;
+      }
+      
+      .info-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+      }
+      
+      @media (max-width: 640px) {
+        body::before {
+          animation-duration: 8s;
         }
         
-        .avatar {
-          width: 100px;
-          height: 100px;
-        }
-        
-        .name {
-          font-size: 24px;
-        }
-        
-        .stats-grid {
-          gap: 12px;
-        }
-        
-        .stat-number {
-          font-size: 18px;
+        .social-btn:hover {
+          transform: translateY(-2px);
         }
       }
     </style>
   </head>
-  <body>
-    <div class="gradient-bg"></div>
-    
-    <div class="container">
-      <!-- Profile Section -->
-      <div class="profile-card fade-in">
-        <img
-          src="https://i.pinimg.com/736x/1e/61/01/1e610131a964c667edd569a8240d0f1c.jpg"
-          alt="Nguyễn Tô Dương"
-          class="avatar"
-        />
-        <h1 class="name">Nguyễn Tô Dương</h1>
-        <p class="title">Software Engineer</p>
-        <p class="bio">
-          Passionate developer from Quang Ngai, currently studying at Da Nang University. 
-          Building amazing software solutions and sharing my journey.
-        </p>
-      </div>
-
-      <!-- Social Links -->
-      <div class="links-grid fade-in" style="animation-delay: 0.2s;">
-        <a href="https://www.facebook.com/duongnguyen.2k3" target="_blank" class="link-item facebook">
-          <div class="link-content">
-            <i class="fab fa-facebook-f link-icon"></i>
-            <span class="link-text">Facebook</span>
-          </div>
-        </a>
-        
-        <a href="https://www.instagram.com/duongnt_0402/" target="_blank" class="link-item instagram">
-          <div class="link-content">
-            <i class="fab fa-instagram link-icon"></i>
-            <span class="link-text">Instagram</span>
-          </div>
-        </a>
-        
-        <a href="https://www.tiktok.com/@ntduong_423" target="_blank" class="link-item tiktok">
-          <div class="link-content">
-            <i class="fab fa-tiktok link-icon"></i>
-            <span class="link-text">TikTok</span>
-          </div>
-        </a>
-        
-        <a href="https://soundcloud.com/duongnguyen4203" target="_blank" class="link-item soundcloud">
-          <div class="link-content">
-            <i class="fab fa-soundcloud link-icon"></i>
-            <span class="link-text">SoundCloud</span>
-          </div>
-        </a>
-        
-        <a href="mailto:nguyentoduong.2003@gmail.com" class="link-item" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);">
-          <div class="link-content">
-            <i class="fas fa-envelope link-icon"></i>
-            <span class="link-text">Email Me</span>
-          </div>
-        </a>
-      </div>
-
-      <!-- Statistics -->
-      <div class="stats-section fade-in" style="animation-delay: 0.4s;">
-        <div class="stats-title">Statistics</div>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number" id="visitorCount">0</div>
-            <div class="stat-label">Total Views</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" id="todayCount">0</div>
-            <div class="stat-label">Today</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" id="onlineCount">1</div>
-            <div class="stat-label">Online</div>
+  <body class="flex items-center justify-center min-h-screen px-3 sm:px-4 py-6">
+    <div class="w-full flex items-center justify-center relative z-10">
+      <div
+        class="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl rounded-2xl p-4 sm:p-6 md:p-8 glass-effect animate-scaleIn"
+      >
+        <!-- Avatar với hiệu ứng -->
+        <div class="flex justify-center mb-6 animate-slideUp">
+          <div class="relative">
+            <img
+              src="https://i.pinimg.com/736x/1e/61/01/1e610131a964c667edd569a8240d0f1c.jpg"
+              alt="Avatar Nguyễn Tô Dương"
+              class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full border-4 border-white/80 shadow-xl object-cover animate-pulse-custom"
+            />
+            <div class="absolute -top-1 -right-1 w-6 h-6 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>
           </div>
         </div>
-      </div>
-
-      <!-- Recent Visitors -->
-      <div class="visitors-section fade-in" style="animation-delay: 0.6s;">
-        <div class="visitors-header" id="visitorsToggle">
-          <div class="visitors-title">
-            <i class="fas fa-users"></i>
-            Recent Visitors
+        
+        <!-- Tên và tiêu đề -->
+        <div class="text-center mb-6 animate-slideUp" style="animation-delay: 0.2s;">
+          <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 tracking-wide">
+            NGUYỄN TÔ DƯƠNG
+          </h1>
+          <p class="text-white/80 text-sm sm:text-base font-medium">Software Engineer</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full mx-auto mt-3"></div>
+        </div>
+        
+        <!-- Thông tin cá nhân với hiệu ứng -->
+        <div class="mb-6 glass-effect rounded-xl p-4 sm:p-5 shadow-lg animate-slideUp" style="animation-delay: 0.4s;">
+          <h2 class="text-white font-semibold text-lg mb-4 flex items-center">
+            <i class="fas fa-user-circle mr-2 text-blue-300"></i>
+             Personal Information
+          </h2>
+          <div class="text-white space-y-3 text-sm sm:text-base">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center info-item rounded-lg p-2 -mx-2">
+              <span class="font-semibold text-blue-200 flex items-center mb-1 sm:mb-0">
+                <i class="fas fa-graduation-cap mr-2 w-4"></i>
+                Education:
+              </span>
+              <span class="text-white/90 sm:text-right">Da Nang University</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center info-item rounded-lg p-2 -mx-2">
+              <span class="font-semibold text-blue-200 flex items-center mb-1 sm:mb-0">
+                <i class="fas fa-briefcase mr-2 w-4"></i>
+                Work:
+              </span>
+              <span class="text-white/90 sm:text-right">Software Engineer</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center info-item rounded-lg p-2 -mx-2">
+              <span class="font-semibold text-blue-200 flex items-center mb-1 sm:mb-0">
+                <i class="fas fa-envelope mr-2 w-4"></i>
+                Email:
+              </span>
+              <span class="text-white/90 sm:text-right break-all text-xs sm:text-sm">
+                nguyentoduong.2003@gmail.com
+              </span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center info-item rounded-lg p-2 -mx-2">
+              <span class="font-semibold text-blue-200 flex items-center mb-1 sm:mb-0">
+                <i class="fas fa-map-marker-alt mr-2 w-4"></i>
+                From:
+              </span>
+              <span class="text-white/90 sm:text-right">Quang Ngai City</span>
+            </div>
           </div>
-          <i class="fas fa-chevron-down visitors-toggle" id="chevronIcon"></i>
         </div>
-        <div class="visitors-list" id="visitorsList">
-          <!-- Visitors will be populated here -->
+        
+        <!-- Social Links với animation stagger -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <!-- Facebook Link -->
+          <a
+            href="https://www.facebook.com/duongnguyen.2k3"
+            target="_blank"
+            class="social-btn flex items-center p-3 sm:p-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 justify-center shadow-lg animate-slideUp"
+            style="animation-delay: 0.6s;"
+          >
+            <i class="fab fa-facebook-f mr-3 text-lg sm:text-xl"></i>
+            <span class="font-medium">Facebook</span>
+          </a>
+          
+          <!-- TikTok Link -->
+          <a
+            href="https://www.tiktok.com/@ntduong_423"
+            target="_blank"
+            class="social-btn flex items-center p-3 sm:p-4 bg-gradient-to-r from-gray-800 to-black text-white rounded-xl hover:from-gray-900 hover:to-gray-800 justify-center shadow-lg animate-slideUp"
+            style="animation-delay: 0.7s;"
+          >
+            <i class="fab fa-tiktok mr-3 text-lg sm:text-xl"></i>
+            <span class="font-medium">TikTok</span>
+          </a>
+          
+          <!-- Instagram Link -->
+          <a
+            href="https://www.instagram.com/duongnt_0402/"
+            target="_blank"
+            class="social-btn flex items-center p-3 sm:p-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl hover:from-pink-600 hover:to-purple-700 justify-center shadow-lg animate-slideUp"
+            style="animation-delay: 0.8s;"
+          >
+            <i class="fab fa-instagram mr-3 text-lg sm:text-xl"></i>
+            <span class="font-medium">Instagram</span>
+          </a>
+          
+          <!-- SoundCloud Link -->
+          <a
+            href="https://soundcloud.com/duongnguyen4203"
+            target="_blank"
+            class="social-btn flex items-center p-3 sm:p-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl hover:from-orange-600 hover:to-red-600 justify-center shadow-lg animate-slideUp"
+            style="animation-delay: 0.9s;"
+          >
+            <i class="fab fa-soundcloud mr-3 text-lg sm:text-xl"></i>
+            <span class="font-medium">SoundCloud</span>
+          </a>
         </div>
-      </div>
+        
+        <!-- Visitor Counter -->
+        <div class="text-center mt-6 animate-slideUp" style="animation-delay: 1s;">
+          <div class="glass-effect rounded-lg p-3 mb-4">
+            <div class="flex items-center justify-center space-x-2 text-white/80">
+              <i class="fas fa-eye text-blue-300"></i>
+              <span class="text-sm font-medium">Lượt xem:</span>
+              <span id="visitorCount" class="font-bold text-white bg-blue-500/30 px-2 py-1 rounded-full text-sm">0</span>
+            </div>
+            <div class="flex items-center justify-center space-x-4 mt-2 text-xs text-white/60">
+              <div class="flex items-center space-x-1">
+                <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span id="onlineCount">1</span>
+                <span>đang online</span>
+              </div>
+              <div class="flex items-center space-x-1">
+                <i class="fas fa-calendar-day text-yellow-300"></i>
+                <span>Hôm nay:</span>
+                <span id="todayCount" class="font-semibold">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <!-- Footer -->
-      <div class="footer fade-in" style="animation-delay: 0.8s;">
-        <p>© 2025 Nguyễn Tô Dương • Made with ❤️</p>
+        <!-- Recent Visitors Section -->
+        <div class="mt-4 animate-slideUp" style="animation-delay: 1.1s;">
+          <div class="glass-effect rounded-lg p-4">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-white font-semibold text-sm flex items-center">
+                <i class="fas fa-users mr-2 text-green-300"></i>
+                Người đã xem gần đây
+              </h3>
+              <button id="toggleVisitors" class="text-blue-300 hover:text-blue-200 text-xs">
+                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+              </button>
+            </div>
+            
+            <div id="visitorsPanel" class="space-y-2 max-h-0 overflow-hidden transition-all duration-300">
+              <div id="visitorsList" class="space-y-2">
+                <!-- Visitors will be dynamically added here -->
+              </div>
+              
+              <!-- Load more button -->
+              <div class="text-center pt-2">
+                <button id="loadMoreVisitors" class="text-blue-300 hover:text-blue-200 text-xs">
+                  <i class="fas fa-plus mr-1"></i>
+                  Xem thêm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="text-center mt-4 animate-slideUp" style="animation-delay: 1.1s;">
+          <p class="text-white/60 text-xs sm:text-sm">
+            © 2025 Nguyễn Tô Dương. All rights reserved.
+          </p>
+        </div>
       </div>
     </div>
 
@@ -496,15 +353,25 @@
 
         async trackVisit() {
           try {
+            // Kiểm tra session để tránh đếm trùng lặp
             const sessionId = sessionStorage.getItem(this.sessionKey);
             if (!sessionId) {
               sessionStorage.setItem(this.sessionKey, Date.now().toString());
+              
+              // Cập nhật lượt xem local
               this.updateLocalVisits();
+              
+              // Cập nhật lượt xem hôm nay
               this.updateTodayVisits();
+              
+              // Thêm visitor mới
               this.addNewVisitor();
+              
+              // Gọi API external (có thể thay thế bằng API của bạn)
               await this.updateExternalCounter();
             }
             
+            // Hiển thị thống kê
             this.displayStats();
             this.displayVisitors();
             
@@ -517,8 +384,11 @@
         addNewVisitor() {
           const visitors = this.getVisitors();
           const newVisitor = this.generateVisitorData();
+          
+          // Thêm visitor mới vào đầu danh sách
           visitors.unshift(newVisitor);
           
+          // Giữ tối đa 50 visitors
           if (visitors.length > 50) {
             visitors.splice(50);
           }
@@ -535,12 +405,17 @@
             browser: this.getRandomElement(this.browsers),
             device: this.getRandomElement(this.devices),
             timestamp: now.toISOString(),
-            isOnline: Math.random() > 0.7
+            ip: this.generateFakeIP(),
+            isOnline: Math.random() > 0.7 // 30% chance to be online
           };
         }
 
         getRandomElement(array) {
           return array[Math.floor(Math.random() * array.length)];
+        }
+
+        generateFakeIP() {
+          return `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
         }
 
         getVisitors() {
@@ -560,9 +435,11 @@
           const lastVisit = localStorage.getItem(this.lastVisitKey);
           
           if (lastVisit !== today) {
+            // Ngày mới, reset counter hôm nay
             localStorage.setItem(this.todayKey, '1');
             localStorage.setItem(this.lastVisitKey, today);
           } else {
+            // Cùng ngày, tăng counter
             let todayCount = parseInt(localStorage.getItem(this.todayKey) || '0');
             todayCount++;
             localStorage.setItem(this.todayKey, todayCount.toString());
@@ -584,6 +461,7 @@
           const totalVisits = localStorage.getItem(this.localStorageKey) || '0';
           const todayVisits = localStorage.getItem(this.todayKey) || '0';
           
+          // Hiển thị với animation
           this.animateCounter('visitorCount', parseInt(totalVisits));
           this.animateCounter('todayCount', parseInt(todayVisits));
         }
@@ -609,12 +487,14 @@
         }
 
         updateOnlineStatus() {
+          // Update online status cho visitors
           const visitors = this.getVisitors();
           visitors.forEach(visitor => {
-            visitor.isOnline = Math.random() > 0.8;
+            visitor.isOnline = Math.random() > 0.8; // 20% chance to be online
           });
           localStorage.setItem(this.visitorsKey, JSON.stringify(visitors));
           
+          // Simulation online users
           const onlineVisitors = visitors.filter(v => v.isOnline).length;
           const totalOnline = Math.max(1, onlineVisitors + Math.floor(Math.random() * 3));
           document.getElementById('onlineCount').textContent = totalOnline;
@@ -622,7 +502,7 @@
           this.displayVisitors();
         }
 
-        displayVisitors() {
+        displayVisitors(limit = 5) {
           const visitors = this.getVisitors();
           const visitorsList = document.getElementById('visitorsList');
           
@@ -630,32 +510,45 @@
           
           visitorsList.innerHTML = '';
           
-          const displayVisitors = visitors.slice(0, 8);
+          const displayVisitors = visitors.slice(0, limit);
           
           displayVisitors.forEach((visitor, index) => {
-            const visitorElement = this.createVisitorElement(visitor);
+            const visitorElement = this.createVisitorElement(visitor, index);
             visitorsList.appendChild(visitorElement);
           });
+          
+          // Update load more button
+          const loadMoreBtn = document.getElementById('loadMoreVisitors');
+          if (loadMoreBtn) {
+            loadMoreBtn.style.display = visitors.length > limit ? 'block' : 'none';
+          }
         }
 
-        createVisitorElement(visitor) {
+        createVisitorElement(visitor, index) {
           const div = document.createElement('div');
-          div.className = 'visitor-item';
+          div.className = 'flex items-center justify-between p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300';
+          div.style.animationDelay = `${index * 0.1}s`;
+          div.classList.add('animate-slideUp');
           
           const timeAgo = this.getTimeAgo(new Date(visitor.timestamp));
           
           div.innerHTML = `
-            <div class="visitor-avatar">
-              ${visitor.name.charAt(0)}
-            </div>
-            <div class="visitor-info">
-              <div class="visitor-name">
-                ${visitor.name}
-                ${visitor.isOnline ? '<div class="online-dot"></div>' : ''}
+            <div class="flex items-center space-x-2 flex-1 min-w-0">
+              <div class="w-6 h-6 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                ${visitor.name.charAt(0)}
               </div>
-              <div class="visitor-details">${visitor.location} • ${visitor.device}</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center space-x-1">
+                  <span class="text-white text-xs font-medium truncate">${visitor.name}</span>
+                  ${visitor.isOnline ? '<div class="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0"></div>' : ''}
+                </div>
+                <div class="text-white/60 text-xs truncate">${visitor.location} • ${visitor.device}</div>
+              </div>
             </div>
-            <div class="visitor-time">${timeAgo}</div>
+            <div class="text-white/50 text-xs text-right flex-shrink-0">
+              <div>${timeAgo}</div>
+              <div class="text-white/40">${visitor.browser}</div>
+            </div>
           `;
           
           return div;
@@ -669,44 +562,76 @@
           const diffDays = Math.floor(diffMs / 86400000);
           
           if (diffMins < 1) return 'Vừa xong';
-          if (diffMins < 60) return `${diffMins}p`;
-          if (diffHours < 24) return `${diffHours}h`;
-          return `${diffDays}d`;
+          if (diffMins < 60) return `${diffMins}p trước`;
+          if (diffHours < 24) return `${diffHours}h trước`;
+          return `${diffDays}d trước`;
         }
 
         initVisitorsPanel() {
-          const toggleBtn = document.getElementById('visitorsToggle');
-          const visitorsList = document.getElementById('visitorsList');
-          const chevronIcon = document.getElementById('chevronIcon');
+          const toggleBtn = document.getElementById('toggleVisitors');
+          const panel = document.getElementById('visitorsPanel');
+          const loadMoreBtn = document.getElementById('loadMoreVisitors');
           
-          if (!toggleBtn || !visitorsList) return;
+          if (!toggleBtn || !panel) return;
           
           let isExpanded = false;
+          let visibleCount = 5;
           
           toggleBtn.addEventListener('click', () => {
             isExpanded = !isExpanded;
+            const chevron = toggleBtn.querySelector('.fas');
             
             if (isExpanded) {
-              visitorsList.classList.add('expanded');
-              chevronIcon.style.transform = 'rotate(180deg)';
-              this.displayVisitors();
+              panel.style.maxHeight = '400px';
+              chevron.style.transform = 'rotate(180deg)';
+              this.displayVisitors(visibleCount);
             } else {
-              visitorsList.classList.remove('expanded');
-              chevronIcon.style.transform = 'rotate(0deg)';
+              panel.style.maxHeight = '0';
+              chevron.style.transform = 'rotate(0deg)';
             }
           });
+          
+          if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+              visibleCount += 5;
+              this.displayVisitors(visibleCount);
+            });
+          }
         }
 
         startOnlineTimer() {
+          // Cập nhật số người online mỗi 30 giây
           setInterval(() => {
             this.updateOnlineStatus();
           }, 30000);
         }
 
+        // Method để reset counter (có thể gọi từ console)
+        resetCounter() {
+          localStorage.removeItem(this.localStorageKey);
+          localStorage.removeItem(this.todayKey);
+          localStorage.removeItem(this.lastVisitKey);
+          localStorage.removeItem(this.visitorsKey);
+          sessionStorage.removeItem(this.sessionKey);
+          location.reload();
+        }
+
+        // Method để get stats programmatically
+        getStats() {
+          return {
+            totalVisits: localStorage.getItem(this.localStorageKey) || '0',
+            todayVisits: localStorage.getItem(this.todayKey) || '0',
+            lastVisit: localStorage.getItem(this.lastVisitKey),
+            visitorsCount: this.getVisitors().length
+          };
+        }
+
+        // Method để thêm sample data
         addSampleVisitors() {
           const sampleCount = 15;
           for (let i = 0; i < sampleCount; i++) {
             const visitor = this.generateVisitorData();
+            // Random timestamp trong 7 ngày qua
             const randomTime = new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000);
             visitor.timestamp = randomTime.toISOString();
             
@@ -716,21 +641,13 @@
           }
           this.displayVisitors();
         }
-
-        resetCounter() {
-          localStorage.removeItem(this.localStorageKey);
-          localStorage.removeItem(this.todayKey);
-          localStorage.removeItem(this.lastVisitKey);
-          localStorage.removeItem(this.visitorsKey);
-          sessionStorage.removeItem(this.sessionKey);
-          location.reload();
-        }
       }
 
-      // Initialize tracker when DOM loaded
+      // Khởi tạo tracker khi DOM loaded
       document.addEventListener('DOMContentLoaded', () => {
         window.visitorTracker = new VisitorTracker();
         
+        // Thêm sample data nếu chưa có visitors
         setTimeout(() => {
           const visitors = window.visitorTracker.getVisitors();
           if (visitors.length === 0) {
@@ -739,6 +656,7 @@
         }, 1000);
       });
 
+      // Thêm event listener cho visibility change để track active users
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden && window.visitorTracker) {
           window.visitorTracker.updateOnlineStatus();
